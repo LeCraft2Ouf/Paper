@@ -1,0 +1,42 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft2Ouf <robartalexis62@gmail.com>
+Date: Sun, 16 Apr 2023 14:55:22 +0200
+Subject: [PATCH] Change drop to Cactus && Try place around cactus #2
+
+
+diff --git a/src/main/java/net/minecraft/world/level/block/CactusBlock.java b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+index 2e2256456ad79a030dea06f7c28cad015ca6588c..74412f87929dd2e07e0f34a0db88aebc044181d0 100644
+--- a/src/main/java/net/minecraft/world/level/block/CactusBlock.java
++++ b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+@@ -106,20 +106,21 @@ public class CactusBlock extends Block {
+         Direction enumdirection;
+         Material material;
+ 
+-        do {
+-            if (!iterator.hasNext()) {
+-                BlockState iblockdata1 = world.getBlockState(pos.below());
++        // do {
++        //     if (!iterator.hasNext()) {
++        //         BlockState iblockdata1 = world.getBlockState(pos.below());
+ 
+-                return (iblockdata1.is(Blocks.CACTUS) || iblockdata1.is(Blocks.SAND) || iblockdata1.is(Blocks.RED_SAND)) && !world.getBlockState(pos.above()).getMaterial().isLiquid();
+-            }
++        //         return (iblockdata1.is(Blocks.CACTUS) || iblockdata1.is(Blocks.SAND) || iblockdata1.is(Blocks.RED_SAND)) && !world.getBlockState(pos.above()).getMaterial().isLiquid();
++        //     }
+ 
+-            enumdirection = (Direction) iterator.next();
+-            BlockState iblockdata2 = world.getBlockState(pos.relative(enumdirection));
++        //     enumdirection = (Direction) iterator.next();
++        //     BlockState iblockdata2 = world.getBlockState(pos.relative(enumdirection));
+ 
+-            material = iblockdata2.getMaterial();
+-        } while (!material.isSolid() && !world.getFluidState(pos.relative(enumdirection)).is(FluidTags.LAVA));
++        //     material = iblockdata2.getMaterial();
++        // } while (!material.isSolid() && !world.getFluidState(pos.relative(enumdirection)).is(FluidTags.LAVA));
+ 
+-        return true;
++        BlockState iblockdata1 = world.getBlockState(pos.below());
++        return (iblockdata1.is(Blocks.CACTUS) || iblockdata1.is(Blocks.SAND) || iblockdata1.is(Blocks.RED_SAND));
+     }
+ 
+     @Override

@@ -1,0 +1,41 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft2Ouf <robartalexis62@gmail.com>
+Date: Sun, 16 Apr 2023 15:39:51 +0200
+Subject: [PATCH] Change /version commande
+
+
+diff --git a/src/main/java/org/bukkit/command/defaults/PluginsCommand.java b/src/main/java/org/bukkit/command/defaults/PluginsCommand.java
+index 79eb1b99b45a5dbf1a574089cdc0f18834aa59fe..155158a02c06f54626a35a0521a88243653724b9 100644
+--- a/src/main/java/org/bukkit/command/defaults/PluginsCommand.java
++++ b/src/main/java/org/bukkit/command/defaults/PluginsCommand.java
+@@ -25,7 +25,7 @@ public class PluginsCommand extends BukkitCommand {
+     public boolean execute(@NotNull CommandSender sender, @NotNull String currentAlias, @NotNull String[] args) {
+         if (!testPermission(sender)) return true;
+ 
+-        sender.sendMessage("Plugins (2)" + getPluginList());
++        sender.sendMessage("Plugins" + getPluginList());
+         return true;
+     }
+ 
+@@ -56,10 +56,11 @@ public class PluginsCommand extends BukkitCommand {
+             pluginList.append(plugin.isEnabled() ? ChatColor.GREEN : ChatColor.RED);
+             // Paper start - Add an asterisk to legacy plugins (so admins are aware)
+             String pluginName = plugin.getDescription().getName();
++            String pluginVersion = plugin.getDescription().getVersion();
+             if (org.bukkit.UnsafeValues.isLegacyPlugin(plugin)) {
+                 pluginName += "*";
+             }
+-            pluginList.append(pluginName);
++            pluginList.append(pluginName + pluginVersion);
+             // Paper end
+ 
+             if (plugin.getDescription().getProvides().size() > 0) {
+@@ -67,7 +68,7 @@ public class PluginsCommand extends BukkitCommand {
+             }
+         }
+ 
+-        return "(" + plugins.size() + "): " + pluginList.toString();
++        return "[" + plugins.size() + "]: " + pluginList.toString();
+         // Paper end
+     }
+ 

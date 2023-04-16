@@ -1,0 +1,21 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft2Ouf <robartalexis62@gmail.com>
+Date: Sun, 16 Apr 2023 16:05:48 +0200
+Subject: [PATCH] Remove damageable cactus
+
+
+diff --git a/src/main/java/net/minecraft/world/level/block/CactusBlock.java b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+index 74412f87929dd2e07e0f34a0db88aebc044181d0..c98958e4344a38e42215760ad76a57fcb1de83a6 100644
+--- a/src/main/java/net/minecraft/world/level/block/CactusBlock.java
++++ b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+@@ -127,8 +127,8 @@ public class CactusBlock extends Block {
+     public void entityInside(BlockState state, Level world, BlockPos pos, Entity entity) {
+         if (!new io.papermc.paper.event.entity.EntityInsideBlockEvent(entity.getBukkitEntity(), org.bukkit.craftbukkit.block.CraftBlock.at(world, pos)).callEvent()) { return; } // Paper
+         CraftEventFactory.blockDamage = world.getWorld().getBlockAt(pos.getX(), pos.getY(), pos.getZ()); // CraftBukkit
+-        entity.hurt(DamageSource.CACTUS, 1.0F);
+-        CraftEventFactory.blockDamage = null; // CraftBukkit
++        //entity.hurt(DamageSource.CACTUS, 1.0F);
++        //CraftEventFactory.blockDamage = null; // CraftBukkit
+     }
+ 
+     @Override

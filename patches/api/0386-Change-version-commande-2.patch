@@ -1,0 +1,28 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft2Ouf <robartalexis62@gmail.com>
+Date: Sun, 16 Apr 2023 15:54:37 +0200
+Subject: [PATCH] Change /version commande #2
+
+
+diff --git a/src/main/java/org/bukkit/command/defaults/PluginsCommand.java b/src/main/java/org/bukkit/command/defaults/PluginsCommand.java
+index 155158a02c06f54626a35a0521a88243653724b9..a1b0eefac74990bfb612ee9003ba521742ac339c 100644
+--- a/src/main/java/org/bukkit/command/defaults/PluginsCommand.java
++++ b/src/main/java/org/bukkit/command/defaults/PluginsCommand.java
+@@ -60,7 +60,7 @@ public class PluginsCommand extends BukkitCommand {
+             if (org.bukkit.UnsafeValues.isLegacyPlugin(plugin)) {
+                 pluginName += "*";
+             }
+-            pluginList.append(pluginName + pluginVersion);
++            pluginList.append(pluginName + " ( " + pluginVersion + " )");
+             // Paper end
+ 
+             if (plugin.getDescription().getProvides().size() > 0) {
+@@ -68,7 +68,7 @@ public class PluginsCommand extends BukkitCommand {
+             }
+         }
+ 
+-        return "[" + plugins.size() + "]: " + pluginList.toString();
++        return " (" + plugins.size() + "): " + pluginList.toString();
+         // Paper end
+     }
+ 

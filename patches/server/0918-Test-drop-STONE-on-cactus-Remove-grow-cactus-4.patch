@@ -1,0 +1,25 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft2Ouf <robartalexis62@gmail.com>
+Date: Sun, 16 Apr 2023 13:10:00 +0200
+Subject: [PATCH] Test drop STONE on cactus && Remove grow cactus #4
+
+
+diff --git a/src/main/java/net/minecraft/world/level/block/CactusBlock.java b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+index 821ce4b5ab7252b84f1be465caeaad24e9938f6d..850c3d1a841ab0b217cc66cb6a6962148ad76b0e 100644
+--- a/src/main/java/net/minecraft/world/level/block/CactusBlock.java
++++ b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+@@ -61,11 +61,11 @@ public class CactusBlock extends Block {
+                 ;
+             }
+             if (i < world.paperConfig.cactusMaxHeight) { // Paper - Configurable growth height
+-                Location location = new Location(world, pos.getX(), pos.getY(), pos.getZ());
++                // Location location = new Location(blockposition1.getLocation().getWorld(), blockposition1.getX(), blockposition1.getY(), blockposition1.getZ());
+                 ItemStack item = new ItemStack(Blocks.STONE, 1);
+-                ItemEntity entity = new ItemEntity(world, location.getX(), location.getY(), location.getZ(), item);
++                ItemEntity entity = new ItemEntity(world, blockposition1.getX(), blockposition1.getY(), blockposition1.getZ(), item);
+                 entity.pickupDelay = 10;
+-                world.addEntity(entity, SpawnReason.CUSTOM);
++                world.getWorld().addEntity(entity, SpawnReason.CUSTOM);
+                 
+ 
+             //    int j = (Integer) state.getValue(CactusBlock.AGE);

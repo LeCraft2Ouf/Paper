@@ -1,0 +1,33 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft2Ouf <robartalexis62@gmail.com>
+Date: Sun, 16 Apr 2023 12:24:13 +0200
+Subject: [PATCH] Test drop STONE on cactus && Remove grow cactus #2
+
+
+diff --git a/src/main/java/net/minecraft/world/level/block/CactusBlock.java b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+index 0810ce22ff6c6da4839653d12233522e8aa075bb..142ccaaf4f40a78034e6c9ba67538e8989b95ac0 100644
+--- a/src/main/java/net/minecraft/world/level/block/CactusBlock.java
++++ b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+@@ -60,15 +60,14 @@ public class CactusBlock extends Block {
+             for (i = 1; world.getBlockState(pos.below(i)).is((Block) this); ++i) {
+                 ;
+             }
+-            Location location = new Location(world.getWorld(), pos.getX(), pos.getY(), pos.getZ());
+-            ItemStack item = new ItemStack(Blocks.STONE, 1);
+-            ItemEntity entity = new ItemEntity(world, location.getX(), location.getY(), location.getZ(), item);
+-            world.addEntity(entity, SpawnReason.CUSTOM);
+-            
++            if (i < world.paperConfig.cactusMaxHeight) { // Paper - Configurable growth height
++                Location location = new Location(world.getWorld(), pos.getX(), pos.getY(), pos.getZ());
++                ItemStack item = new ItemStack(Blocks.STONE, 1);
++                ItemEntity entity = new ItemEntity(world.getWorld(), location.getX(), location.getY(), location.getZ(), item);
++                entity.pickupDelay = 10;
++                world.addEntity(entity, SpawnReason.CUSTOM);
++                
+ 
+-
+-
+-            //if (i < world.paperConfig.cactusMaxHeight) { // Paper - Configurable growth height
+             //    int j = (Integer) state.getValue(CactusBlock.AGE);
+             //    if (j >= (byte) range(3, ((100.0F / world.spigotConfig.cactusModifier) * 15) + 0.5F, 15)) { // Spigot
+             //        CraftEventFactory.handleBlockGrowEvent(world, blockposition1, this.defaultBlockState()); // CraftBukkit

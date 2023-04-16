@@ -1,0 +1,22 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft2Ouf <robartalexis62@gmail.com>
+Date: Sun, 16 Apr 2023 12:28:41 +0200
+Subject: [PATCH] Test drop STONE on cactus && Remove grow cactus #3
+
+
+diff --git a/src/main/java/net/minecraft/world/level/block/CactusBlock.java b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+index 142ccaaf4f40a78034e6c9ba67538e8989b95ac0..821ce4b5ab7252b84f1be465caeaad24e9938f6d 100644
+--- a/src/main/java/net/minecraft/world/level/block/CactusBlock.java
++++ b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+@@ -61,9 +61,9 @@ public class CactusBlock extends Block {
+                 ;
+             }
+             if (i < world.paperConfig.cactusMaxHeight) { // Paper - Configurable growth height
+-                Location location = new Location(world.getWorld(), pos.getX(), pos.getY(), pos.getZ());
++                Location location = new Location(world, pos.getX(), pos.getY(), pos.getZ());
+                 ItemStack item = new ItemStack(Blocks.STONE, 1);
+-                ItemEntity entity = new ItemEntity(world.getWorld(), location.getX(), location.getY(), location.getZ(), item);
++                ItemEntity entity = new ItemEntity(world, location.getX(), location.getY(), location.getZ(), item);
+                 entity.pickupDelay = 10;
+                 world.addEntity(entity, SpawnReason.CUSTOM);
+                 

@@ -1,0 +1,30 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft2Ouf <robartalexis62@gmail.com>
+Date: Sun, 16 Apr 2023 15:15:44 +0200
+Subject: [PATCH] Wet only try
+
+
+diff --git a/src/main/java/net/minecraft/world/level/block/FarmBlock.java b/src/main/java/net/minecraft/world/level/block/FarmBlock.java
+index 499eae5ab30921f49045dc73bd077941255f727a..a1a932a554bb4794b2700efaad48f923cfdcf22b 100644
+--- a/src/main/java/net/minecraft/world/level/block/FarmBlock.java
++++ b/src/main/java/net/minecraft/world/level/block/FarmBlock.java
+@@ -81,18 +81,7 @@ public class FarmBlock extends Block {
+ 
+     @Override
+     public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random random) {
+-        int i = (Integer) state.getValue(FarmBlock.MOISTURE);
+-
+-        if (!FarmBlock.isNearWater(world, pos) && !world.isRainingAt(pos.above())) {
+-            if (i > 0) {
+-                org.bukkit.craftbukkit.event.CraftEventFactory.handleMoistureChangeEvent(world, pos, (BlockState) state.setValue(FarmBlock.MOISTURE, i - 1), 2); // CraftBukkit
+-            } else if (!FarmBlock.isUnderCrops(world, pos)) {
+-                FarmBlock.turnToDirt(state, world, pos);
+-            }
+-        } else if (i < 7) {
+-            org.bukkit.craftbukkit.event.CraftEventFactory.handleMoistureChangeEvent(world, pos, (BlockState) state.setValue(FarmBlock.MOISTURE, 7), 2); // CraftBukkit
+-        }
+-
++        org.bukkit.craftbukkit.event.CraftEventFactory.handleMoistureChangeEvent(world, pos, (BlockState) state.setValue(FarmBlock.MOISTURE, 7), 2); // CraftBukkit
+     }
+ 
+     @Override

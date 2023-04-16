@@ -1,0 +1,19 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft2Ouf <robartalexis62@gmail.com>
+Date: Sun, 16 Apr 2023 16:14:02 +0200
+Subject: [PATCH] Remove damage jump
+
+
+diff --git a/src/main/java/net/minecraft/world/level/block/FarmBlock.java b/src/main/java/net/minecraft/world/level/block/FarmBlock.java
+index a1a932a554bb4794b2700efaad48f923cfdcf22b..3895ff8a3fea0f93e5b781e5d71e8ea2eda13d2e 100644
+--- a/src/main/java/net/minecraft/world/level/block/FarmBlock.java
++++ b/src/main/java/net/minecraft/world/level/block/FarmBlock.java
+@@ -105,7 +105,7 @@ public class FarmBlock extends Block {
+                 return;
+             }
+             // CraftBukkit end
+-            FarmBlock.turnToDirt(state, world, pos);
++            //FarmBlock.turnToDirt(state, world, pos);
+         }
+ 
+         // super.fallOn(world, iblockdata, blockposition, entity, f); // CraftBukkit - moved up
