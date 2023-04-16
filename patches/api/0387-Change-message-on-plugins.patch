@@ -1,0 +1,19 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft2Ouf <robartalexis62@gmail.com>
+Date: Sun, 16 Apr 2023 17:15:04 +0200
+Subject: [PATCH] Change message on /plugins
+
+
+diff --git a/src/main/java/org/bukkit/command/defaults/PluginsCommand.java b/src/main/java/org/bukkit/command/defaults/PluginsCommand.java
+index a1b0eefac74990bfb612ee9003ba521742ac339c..98b18ab49729debb8a5dbd18082c255f477c5056 100644
+--- a/src/main/java/org/bukkit/command/defaults/PluginsCommand.java
++++ b/src/main/java/org/bukkit/command/defaults/PluginsCommand.java
+@@ -60,7 +60,7 @@ public class PluginsCommand extends BukkitCommand {
+             if (org.bukkit.UnsafeValues.isLegacyPlugin(plugin)) {
+                 pluginName += "*";
+             }
+-            pluginList.append(pluginName + " ( " + pluginVersion + " )");
++            pluginList.append("» " + pluginName + " ( " + pluginVersion + " )" + System.lineSeparator());
+             // Paper end
+ 
+             if (plugin.getDescription().getProvides().size() > 0) {

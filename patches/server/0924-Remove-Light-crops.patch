@@ -1,0 +1,87 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft2Ouf <robartalexis62@gmail.com>
+Date: Sun, 16 Apr 2023 16:51:56 +0200
+Subject: [PATCH] Remove Light crops
+
+
+diff --git a/src/main/java/net/minecraft/world/level/block/CropBlock.java b/src/main/java/net/minecraft/world/level/block/CropBlock.java
+index b4fd9af8805f451c87a91f319c15fa132b91faf7..a09c8ae408d61733ca3576ce730366501bf5ab1b 100644
+--- a/src/main/java/net/minecraft/world/level/block/CropBlock.java
++++ b/src/main/java/net/minecraft/world/level/block/CropBlock.java
+@@ -70,28 +70,26 @@ public class CropBlock extends BushBlock implements BonemealableBlock {
+ 
+     @Override
+     public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random random) {
+-        if (world.getRawBrightness(pos, 0) >= 9) {
+-            int i = this.getAge(state);
+-
+-            if (i < this.getMaxAge()) {
+-                float f = CropBlock.getGrowthSpeed(this, world, pos);
+-
+-                // Spigot start
+-                int modifier;
+-                if (this == Blocks.BEETROOTS) {
+-                    modifier = world.spigotConfig.beetrootModifier;
+-                } else if (this == Blocks.CARROTS) {
+-                    modifier = world.spigotConfig.carrotModifier;
+-                } else if (this == Blocks.POTATOES) {
+-                    modifier = world.spigotConfig.potatoModifier;
+-                } else {
+-                    modifier = world.spigotConfig.wheatModifier;
+-                }
++        int i = this.getAge(state);
++
++        if (i < this.getMaxAge()) {
++            float f = CropBlock.getGrowthSpeed(this, world, pos);
++
++            // Spigot start
++            int modifier;
++            if (this == Blocks.BEETROOTS) {
++                modifier = world.spigotConfig.beetrootModifier;
++            } else if (this == Blocks.CARROTS) {
++                modifier = world.spigotConfig.carrotModifier;
++            } else if (this == Blocks.POTATOES) {
++                modifier = world.spigotConfig.potatoModifier;
++            } else {
++                modifier = world.spigotConfig.wheatModifier;
++            }
+ 
+-                if (random.nextInt((int) ((100.0F / modifier) * (25.0F / f)) + 1) == 0) {
+-                    // Spigot end
+-                    CraftEventFactory.handleBlockGrowEvent(world, pos, this.getStateForAge(i + 1), 2); // CraftBukkit
+-                }
++            if (random.nextInt((int) ((100.0F / modifier) * (25.0F / f)) + 1) == 0) {
++                // Spigot end
++                CraftEventFactory.handleBlockGrowEvent(world, pos, this.getStateForAge(i + 1), 2); // CraftBukkit
+             }
+         }
+ 
+@@ -158,7 +156,7 @@ public class CropBlock extends BushBlock implements BonemealableBlock {
+ 
+     @Override
+     public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
+-        return (world.getRawBrightness(pos, 0) >= 8 || world.canSeeSky(pos)) && super.canSurvive(state, world, pos);
++        return (world.canSeeSky(pos)) && super.canSurvive(state, world, pos);
+     }
+ 
+     @Override
+diff --git a/src/main/java/net/minecraft/world/level/block/DragonEggBlock.java b/src/main/java/net/minecraft/world/level/block/DragonEggBlock.java
+index 7e1edcc7b9f170b7c649437c2f0dd78c0bab9be4..c8fe76e79edafc96cea4687d26d4c0e4ba367805 100644
+--- a/src/main/java/net/minecraft/world/level/block/DragonEggBlock.java
++++ b/src/main/java/net/minecraft/world/level/block/DragonEggBlock.java
+@@ -32,13 +32,13 @@ public class DragonEggBlock extends FallingBlock {
+ 
+     @Override
+     public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+-        this.teleport(state, world, pos);
++        //this.teleport(state, world, pos);
+         return InteractionResult.sidedSuccess(world.isClientSide);
+     }
+ 
+     @Override
+     public void attack(BlockState state, Level world, BlockPos pos, Player player) {
+-        this.teleport(state, world, pos);
++        //this.teleport(state, world, pos);
+     }
+ 
+     private void teleport(BlockState state, Level world, BlockPos pos) {
