@@ -1,0 +1,19 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft2Ouf <robartalexis62@gmail.com>
+Date: Sun, 16 Jul 2023 18:23:53 +0200
+Subject: [PATCH] test
+
+
+diff --git a/src/main/java/net/minecraft/world/level/block/StemBlock.java b/src/main/java/net/minecraft/world/level/block/StemBlock.java
+index e125cc5dd6573238e48c1ac24758226da651908d..9389608672b564f70d27f65ec99bc7ff2dfb462f 100644
+--- a/src/main/java/net/minecraft/world/level/block/StemBlock.java
++++ b/src/main/java/net/minecraft/world/level/block/StemBlock.java
+@@ -69,7 +69,7 @@ public class StemBlock extends BushBlock implements BonemealableBlock {
+                             return;
+                         }
+                         // CraftBukkit end
+-                        world.setBlockAndUpdate(pos, (BlockState) this.fruit.getAttachedStem().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, enumdirection));
++                        
+                     }
+                 }
+             }

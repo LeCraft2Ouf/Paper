@@ -1,0 +1,19 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft2Ouf <robartalexis62@gmail.com>
+Date: Tue, 31 Oct 2023 16:16:50 +0100
+Subject: [PATCH] ADD NOTE_BLOCK ON CACTUS
+
+
+diff --git a/src/main/java/net/minecraft/world/level/block/CactusBlock.java b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+index c98958e4344a38e42215760ad76a57fcb1de83a6..cf09324289d84da943140f6e77621ee2403f5ec0 100644
+--- a/src/main/java/net/minecraft/world/level/block/CactusBlock.java
++++ b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+@@ -120,7 +120,7 @@ public class CactusBlock extends Block {
+         // } while (!material.isSolid() && !world.getFluidState(pos.relative(enumdirection)).is(FluidTags.LAVA));
+ 
+         BlockState iblockdata1 = world.getBlockState(pos.below());
+-        return (iblockdata1.is(Blocks.CACTUS) || iblockdata1.is(Blocks.SAND) || iblockdata1.is(Blocks.RED_SAND));
++        return (iblockdata1.is(Blocks.CACTUS) || iblockdata1.is(Blocks.SAND) || iblockdata1.is(Blocks.RED_SAND || iblockdata1.is(Blocks.NOTE_BLOCK));
+     }
+ 
+     @Override

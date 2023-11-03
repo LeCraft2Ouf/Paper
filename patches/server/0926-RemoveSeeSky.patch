@@ -1,0 +1,19 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft2Ouf <robartalexis62@gmail.com>
+Date: Sun, 1 Oct 2023 13:45:10 +0200
+Subject: [PATCH] RemoveSeeSky
+
+
+diff --git a/src/main/java/net/minecraft/world/level/block/CropBlock.java b/src/main/java/net/minecraft/world/level/block/CropBlock.java
+index a09c8ae408d61733ca3576ce730366501bf5ab1b..346c694e0580178fae6b8b6c3be76f8725fc17ca 100644
+--- a/src/main/java/net/minecraft/world/level/block/CropBlock.java
++++ b/src/main/java/net/minecraft/world/level/block/CropBlock.java
+@@ -156,7 +156,7 @@ public class CropBlock extends BushBlock implements BonemealableBlock {
+ 
+     @Override
+     public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
+-        return (world.canSeeSky(pos)) && super.canSurvive(state, world, pos);
++        return super.canSurvive(state, world, pos);
+     }
+ 
+     @Override
