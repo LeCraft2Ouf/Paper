@@ -1,0 +1,22 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft2Ouf <robartalexis62@gmail.com>
+Date: Fri, 3 Nov 2023 10:33:54 +0100
+Subject: [PATCH] Fix error Mob InsideBlock
+
+
+diff --git a/src/main/java/net/minecraft/world/level/block/CactusBlock.java b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+index c3a1abd8f53c9ff87da060cc4c34f3e5e929543b..4ac3e80737546994603f46bb37c811a588566394 100644
+--- a/src/main/java/net/minecraft/world/level/block/CactusBlock.java
++++ b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+@@ -125,8 +125,9 @@ public class CactusBlock extends Block {
+ 
+     @Override
+     public void entityInside(BlockState state, Level world, BlockPos pos, Entity entity) {
+-        if (!new io.papermc.paper.event.entity.EntityInsideBlockEvent(entity.getBukkitEntity(), org.bukkit.craftbukkit.block.CraftBlock.at(world, pos)).callEvent()) { return; } // Paper
+-        CraftEventFactory.blockDamage = world.getWorld().getBlockAt(pos.getX(), pos.getY(), pos.getZ()); // CraftBukkit
++        return;
++    	//if (!new io.papermc.paper.event.entity.EntityInsideBlockEvent(entity.getBukkitEntity(), org.bukkit.craftbukkit.block.CraftBlock.at(world, pos)).callEvent()) { return; } // Paper
++        //CraftEventFactory.blockDamage = world.getWorld().getBlockAt(pos.getX(), pos.getY(), pos.getZ()); // CraftBukkit
+         //entity.hurt(DamageSource.CACTUS, 1.0F);
+         //CraftEventFactory.blockDamage = null; // CraftBukkit
+     }
