@@ -1,0 +1,18 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft2Ouf <robartalexis62@gmail.com>
+Date: Sat, 2 Dec 2023 03:32:17 +0100
+Subject: [PATCH] Remove drop cactus & Remove RandomTick Cactus
+
+
+diff --git a/src/main/java/net/minecraft/world/level/block/CactusBlock.java b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+index 1ce855b9e596a646cc67f78d7ff5e4d6aa6f0f3f..ecbaf98f56e8cc99f6453405bd98e5bf51eaa5bb 100644
+--- a/src/main/java/net/minecraft/world/level/block/CactusBlock.java
++++ b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+@@ -87,7 +87,6 @@ public class CactusBlock extends Block {
+ 
+         //     material = iblockdata2.getMaterial();
+         // } while (!material.isSolid() && !world.getFluidState(pos.relative(enumdirection)).is(FluidTags.LAVA));
+-
+         BlockState iblockdata1 = world.getBlockState(pos.below());
+         return (iblockdata1.is(Blocks.CACTUS) || iblockdata1.is(Blocks.SAND) || iblockdata1.is(Blocks.RED_SAND) || iblockdata1.is(Blocks.NOTE_BLOCK));
+     }
