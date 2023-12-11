@@ -1,0 +1,43 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft2Ouf <leboss6227@gmail.com>
+Date: Mon, 11 Dec 2023 22:39:39 +0100
+Subject: [PATCH] Patch Cactus
+
+
+diff --git a/src/main/java/net/minecraft/world/level/block/CactusBlock.java b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+index 7849d20796b00cdb479f200fdc75400bee3edde1..60d9ef78486469ee728bd29ffc1d2fbdd6383a20 100644
+--- a/src/main/java/net/minecraft/world/level/block/CactusBlock.java
++++ b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+@@ -75,19 +75,19 @@ public class CactusBlock extends Block {
+         Direction enumdirection;
+         Material material;
+ 
+-        do {
+-	        if (!iterator.hasNext()) {
+-	                 BlockState iblockdata1 = world.getBlockState(pos.below());
+-	
+-	                 return (iblockdata1.is(Blocks.CACTUS) || iblockdata1.is(Blocks.NOTE_BLOCK) || iblockdata1.is(Blocks.SAND) || iblockdata1.is(Blocks.RED_SAND)) && !world.getBlockState(pos.above()).getMaterial().isLiquid();
+-	             }
+-	
+-	             enumdirection = (Direction) iterator.next();
+-	             BlockState iblockdata2 = world.getBlockState(pos.relative(enumdirection));
+-	
+-	             material = iblockdata2.getMaterial();
+-	        } while (!material.isSolid() && !world.getFluidState(pos.relative(enumdirection)).is(FluidTags.LAVA));
+-	    }
++         do {
++             if (!iterator.hasNext()) {
++                 BlockState iblockdata1 = world.getBlockState(pos.below());
++
++                 return (iblockdata1.is(Blocks.CACTUS) || iblockdata1.is(Blocks.NOTE_BLOCK) || iblockdata1.is(Blocks.SAND) || iblockdata1.is(Blocks.RED_SAND)) && !world.getBlockState(pos.above()).getMaterial().isLiquid();
++             }
++
++             enumdirection = (Direction) iterator.next();
++             BlockState iblockdata2 = world.getBlockState(pos.relative(enumdirection));
++
++             material = iblockdata2.getMaterial();
++         } while (!material.isSolid() && !world.getFluidState(pos.relative(enumdirection)).is(FluidTags.LAVA));
++    }
+ 
+     @Override
+     public void entityInside(BlockState state, Level world, BlockPos pos, Entity entity) {

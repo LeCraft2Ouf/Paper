@@ -1,0 +1,49 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft2Ouf <leboss6227@gmail.com>
+Date: Mon, 11 Dec 2023 22:36:31 +0100
+Subject: [PATCH] Patch Cactus
+
+
+diff --git a/src/main/java/net/minecraft/world/level/block/CactusBlock.java b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+index 0a72a7526bae670ffd942539ff021273f1a165a9..5fb4290059e47f7450423602f8df564ead17e2f9 100644
+--- a/src/main/java/net/minecraft/world/level/block/CactusBlock.java
++++ b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+@@ -45,8 +45,6 @@ public class CactusBlock extends Block {
+     public void tick(BlockState state, ServerLevel world, BlockPos pos, Random random) {
+         if (!state.canSurvive(world, pos)) {
+             world.destroyBlock(pos, true);
+-            String message = "Le bloc à la position " + pos.toString() + " a été détruit!";
+-            System.out.println(message);
+         }
+ 
+     }
+@@ -77,20 +75,18 @@ public class CactusBlock extends Block {
+         Direction enumdirection;
+         Material material;
+ 
+-        // do {
+-        //     if (!iterator.hasNext()) {
+-        //         BlockState iblockdata1 = world.getBlockState(pos.below());
++        do {
++        if (!iterator.hasNext()) {
++                 BlockState iblockdata1 = world.getBlockState(pos.below());
+ 
+-        //         return (iblockdata1.is(Blocks.CACTUS) || iblockdata1.is(Blocks.SAND) || iblockdata1.is(Blocks.RED_SAND)) && !world.getBlockState(pos.above()).getMaterial().isLiquid();
+-        //     }
++                 return (iblockdata1.is(Blocks.CACTUS) || iblockdata1.is(Blocks.NOTE_BLOCK) || iblockdata1.is(Blocks.SAND) || iblockdata1.is(Blocks.RED_SAND)) && !world.getBlockState(pos.above()).getMaterial().isLiquid();
++             }
+ 
+-        //     enumdirection = (Direction) iterator.next();
+-        //     BlockState iblockdata2 = world.getBlockState(pos.relative(enumdirection));
++             enumdirection = (Direction) iterator.next();
++             BlockState iblockdata2 = world.getBlockState(pos.relative(enumdirection));
+ 
+-        //     material = iblockdata2.getMaterial();
+-        // } while (!material.isSolid() && !world.getFluidState(pos.relative(enumdirection)).is(FluidTags.LAVA));
+-        BlockState iblockdata1 = world.getBlockState(pos.below());
+-        return (iblockdata1.is(Blocks.CACTUS) || iblockdata1.is(Blocks.SAND) || iblockdata1.is(Blocks.RED_SAND) || iblockdata1.is(Blocks.NOTE_BLOCK));
++             material = iblockdata2.getMaterial();
++        } while (!material.isSolid() && !world.getFluidState(pos.relative(enumdirection)).is(FluidTags.LAVA));
+     }
+ 
+     @Override

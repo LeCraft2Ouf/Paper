@@ -1,0 +1,19 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft2Ouf <leboss6227@gmail.com>
+Date: Mon, 11 Dec 2023 19:52:53 +0100
+Subject: [PATCH] test
+
+
+diff --git a/src/main/java/net/minecraft/world/level/block/CactusBlock.java b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+index ebde088edc62898504648b3f51f4f95675722703..0a72a7526bae670ffd942539ff021273f1a165a9 100644
+--- a/src/main/java/net/minecraft/world/level/block/CactusBlock.java
++++ b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+@@ -46,7 +46,7 @@ public class CactusBlock extends Block {
+         if (!state.canSurvive(world, pos)) {
+             world.destroyBlock(pos, true);
+             String message = "Le bloc à la position " + pos.toString() + " a été détruit!";
+-            world.getPlayers().forEach(player -> player.sendMessage(Component.text(message), player.getUUID()));
++            System.out.println(message);
+         }
+ 
+     }
