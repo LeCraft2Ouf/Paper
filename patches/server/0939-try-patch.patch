@@ -1,0 +1,19 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft2Ouf <leboss6227@gmail.com>
+Date: Tue, 12 Dec 2023 10:04:46 +0100
+Subject: [PATCH] try patch
+
+
+diff --git a/src/main/java/net/minecraft/world/level/block/CactusBlock.java b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+index 271e4813173e4c4a93db6a898eef639715367824..5483c81076cfc75a3e82fdcd2b5ba8d8e4278900 100644
+--- a/src/main/java/net/minecraft/world/level/block/CactusBlock.java
++++ b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+@@ -88,7 +88,7 @@ public class CactusBlock extends Block {
+              material = iblockdata2.getMaterial();
+          } while (!material.isSolid() && !world.getFluidState(pos.relative(enumdirection)).is(FluidTags.LAVA));
+ 
+-         return true;
++         return false;
+     }
+ 
+     @Override
