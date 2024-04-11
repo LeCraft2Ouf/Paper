@@ -1,0 +1,34 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft2Ouf <leboss6227@gmail.com>
+Date: Tue, 12 Dec 2023 17:47:42 +0100
+Subject: [PATCH] Fix cactus 2
+
+
+diff --git a/src/main/java/net/minecraft/world/level/block/CactusBlock.java b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+index b2ceab5b5eada456518958299c03db796de4d3ce..7182820928d25bec910fe63034d8a4fba4623f10 100644
+--- a/src/main/java/net/minecraft/world/level/block/CactusBlock.java
++++ b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+@@ -41,14 +41,6 @@ public class CactusBlock extends Block {
+         this.registerDefaultState((BlockState) ((BlockState) this.stateDefinition.any()).setValue(CactusBlock.AGE, 0));
+     }
+ 
+-    @Override
+-    public void tick(BlockState state, ServerLevel world, BlockPos pos, Random random) {
+-        if (!state.canSurvive(world, pos)) {
+-            world.destroyBlock(pos, true);
+-        }
+-
+-    }
+-
+     @Override
+     public VoxelShape getCollisionShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+         return CactusBlock.COLLISION_SHAPE;
+@@ -78,7 +70,7 @@ public class CactusBlock extends Block {
+          do {
+              if (!iterator.hasNext()) {
+                  BlockState iblockdata1 = world.getBlockState(pos.below());
+-                 return (iblockdata1.is(Blocks.CACTUS) || iblockdata1.is(Blocks.NOTE_BLOCK) || iblockdata1.is(Blocks.SAND) || iblockdata1.is(Blocks.RED_SAND)) && !world.getBlockState(pos.above()).getMaterial().isLiquid();
++                 return (iblockdata1.is(Blocks.CACTUS) || iblockdata1.is(Blocks.SAND) || iblockdata1.is(Blocks.RED_SAND)) && !world.getBlockState(pos.above()).getMaterial().isLiquid();
+              }
+ 
+              enumdirection = (Direction) iterator.next();

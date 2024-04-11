@@ -1,0 +1,26 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft2Ouf <leboss6227@gmail.com>
+Date: Tue, 12 Dec 2023 17:31:06 +0100
+Subject: [PATCH] Remove Place around Cactus && Try remove Destroy cactus on
+ place around cactus
+
+
+diff --git a/src/main/java/net/minecraft/world/level/block/CactusBlock.java b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+index da59fe3ba8ef55776623c094fcda233d9992675f..4358161965ab21b9269924bf17450253aa0a4033 100644
+--- a/src/main/java/net/minecraft/world/level/block/CactusBlock.java
++++ b/src/main/java/net/minecraft/world/level/block/CactusBlock.java
+@@ -41,14 +41,6 @@ public class CactusBlock extends Block {
+         this.registerDefaultState((BlockState) ((BlockState) this.stateDefinition.any()).setValue(CactusBlock.AGE, 0));
+     }
+ 
+-    @Override
+-    public void tick(BlockState state, ServerLevel world, BlockPos pos, Random random) {
+-        if (!state.canSurvive(world, pos)) {
+-            //world.destroyBlock(pos, true);
+-        	return true;
+-        }
+-
+-    }
+ 
+     @Override
+     public VoxelShape getCollisionShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {

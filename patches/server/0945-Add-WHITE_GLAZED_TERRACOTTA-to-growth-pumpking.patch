@@ -1,0 +1,38 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft2Ouf <leboss6227@gmail.com>
+Date: Sun, 24 Mar 2024 18:30:40 +0100
+Subject: [PATCH] Add WHITE_GLAZED_TERRACOTTA to growth pumpking
+
+
+diff --git a/src/main/java/net/minecraft/world/level/block/StemBlock.java b/src/main/java/net/minecraft/world/level/block/StemBlock.java
+index 9389608672b564f70d27f65ec99bc7ff2dfb462f..9b270ac9e622aad8d58f5e15a3bd99fcf0ecdb5a 100644
+--- a/src/main/java/net/minecraft/world/level/block/StemBlock.java
++++ b/src/main/java/net/minecraft/world/level/block/StemBlock.java
+@@ -63,12 +63,22 @@ public class StemBlock extends BushBlock implements BonemealableBlock {
+                     BlockPos blockposition1 = pos.relative(enumdirection);
+                     BlockState iblockdata1 = world.getBlockState(blockposition1.below());
+ 
+-                    if (world.getBlockState(blockposition1).isAir() && (iblockdata1.is(Blocks.FARMLAND) || iblockdata1.is(BlockTags.DIRT))) {
++                    if (this == Blocks.PUMPKIN_STEM){
++                        if (world.getBlockState(blockposition1).isAir() && (iblockdata1.is(Blocks.FARMLAND) || iblockdata1.is(BlockTags.DIRT) || iblockdata1.is(Blocks.WHITE_GLAZED_TERRACOTTA))) {
+                         // CraftBukkit start
+-                        if (!CraftEventFactory.handleBlockGrowEvent(world, blockposition1, this.fruit.defaultBlockState())) {
+-                            return;
+-                        }
+-                        // CraftBukkit end
++                            if (!CraftEventFactory.handleBlockGrowEvent(world, blockposition1, this.fruit.defaultBlockState())) {
++                                return;
++                            }
++                        // CraftBukkit end
++                    } else {
++                        if (world.getBlockState(blockposition1).isAir() && (iblockdata1.is(Blocks.FARMLAND) || iblockdata1.is(BlockTags.DIRT))) {
++                        // CraftBukkit start
++                            if (!CraftEventFactory.handleBlockGrowEvent(world, blockposition1, this.fruit.defaultBlockState())) {
++                                return;
++                            }
++                        // CraftBukkit end
++                    }
++                    
+                         
+                     }
+                 }
