@@ -1,0 +1,19 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft2Ouf <leboss6227@gmail.com>
+Date: Sat, 8 Jun 2024 09:42:57 +0200
+Subject: [PATCH] Fix blue terracotta
+
+
+diff --git a/src/main/java/net/minecraft/world/level/block/StemBlock.java b/src/main/java/net/minecraft/world/level/block/StemBlock.java
+index a1e98577c3759a293cce3b02e23a53e62ebb177b..be0e9ca885e8bc62cc66ca781b0282e020c83d9e 100644
+--- a/src/main/java/net/minecraft/world/level/block/StemBlock.java
++++ b/src/main/java/net/minecraft/world/level/block/StemBlock.java
+@@ -64,7 +64,7 @@ public class StemBlock extends BushBlock implements BonemealableBlock {
+                     BlockState iblockdata1 = world.getBlockState(blockposition1.below());
+ 
+                     if (this == Blocks.PUMPKIN_STEM){
+-                        if (world.getBlockState(blockposition1).isAir() && (iblockdata1.is(Blocks.FARMLAND) || iblockdata1.is(BlockTags.DIRT) || iblockdata1.is(Blocks.WHITE_GLAZED_TERRACOTTA) || iblockdata1.is(Blocks.ORANGE_GLAZED_TERRACOTTA) || iblockdata1.is(Blocks.MAGENTA_GLAZED_TERRACOTTA) || iblockdata1.is(Blocks.LIGHT_BLUE_GLAZED_TERRACOTTA))) {
++                        if (world.getBlockState(blockposition1).isAir() && (iblockdata1.is(Blocks.FARMLAND) || iblockdata1.is(BlockTags.DIRT) || iblockdata1.is(Blocks.WHITE_GLAZED_TERRACOTTA) || iblockdata1.is(Blocks.ORANGE_GLAZED_TERRACOTTA) || iblockdata1.is(Blocks.MAGENTA_GLAZED_TERRACOTTA) || iblockdata1.is(Blocks.BLUE_GLAZED_TERRACOTTA))) {
+                         // CraftBukkit start
+                             if (!CraftEventFactory.handleBlockGrowEvent(world, blockposition1, this.fruit.defaultBlockState())) {
+                                 return;
