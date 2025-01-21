@@ -1,0 +1,18 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft <robartalexis62@gmail.com>
+Date: Fri, 30 Aug 2024 06:59:01 +0200
+Subject: [PATCH] Remove Fluid Move
+
+
+diff --git a/src/main/java/net/minecraft/world/level/material/FlowingFluid.java b/src/main/java/net/minecraft/world/level/material/FlowingFluid.java
+index ff40fe323964f173561a6838fb443e79abf9df38..5ab1ae2b2882e3ed84b94b9a932cdac72536c245 100644
+--- a/src/main/java/net/minecraft/world/level/material/FlowingFluid.java
++++ b/src/main/java/net/minecraft/world/level/material/FlowingFluid.java
+@@ -131,6 +131,7 @@ public abstract class FlowingFluid extends Fluid {
+     }
+ 
+     protected void spread(LevelAccessor world, BlockPos fluidPos, FluidState state) {
++        return;
+         if (!state.isEmpty()) {
+             BlockState iblockdata = world.getBlockState(fluidPos);
+             BlockPos blockposition1 = fluidPos.below();

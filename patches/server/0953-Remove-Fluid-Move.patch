@@ -1,0 +1,63 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft <robartalexis62@gmail.com>
+Date: Fri, 30 Aug 2024 07:04:19 +0200
+Subject: [PATCH] Remove Fluid Move
+
+
+diff --git a/src/main/java/net/minecraft/world/level/material/FlowingFluid.java b/src/main/java/net/minecraft/world/level/material/FlowingFluid.java
+index 5ab1ae2b2882e3ed84b94b9a932cdac72536c245..8748fbde7ff49cb9b40f43659c0586869c54eda4 100644
+--- a/src/main/java/net/minecraft/world/level/material/FlowingFluid.java
++++ b/src/main/java/net/minecraft/world/level/material/FlowingFluid.java
+@@ -132,31 +132,31 @@ public abstract class FlowingFluid extends Fluid {
+ 
+     protected void spread(LevelAccessor world, BlockPos fluidPos, FluidState state) {
+         return;
+-        if (!state.isEmpty()) {
+-            BlockState iblockdata = world.getBlockState(fluidPos);
+-            BlockPos blockposition1 = fluidPos.below();
+-            BlockState iblockdata1 = world.getBlockState(blockposition1);
+-            FluidState fluid1 = this.getNewLiquid(world, blockposition1, iblockdata1);
++        // if (!state.isEmpty()) {
++            // BlockState iblockdata = world.getBlockState(fluidPos);
++            // BlockPos blockposition1 = fluidPos.below();
++            // BlockState iblockdata1 = world.getBlockState(blockposition1);
++            // FluidState fluid1 = this.getNewLiquid(world, blockposition1, iblockdata1);
+ 
+-            if (this.canSpreadTo(world, fluidPos, iblockdata, Direction.DOWN, blockposition1, iblockdata1, world.getFluidState(blockposition1), fluid1.getType())) {
++            // if (this.canSpreadTo(world, fluidPos, iblockdata, Direction.DOWN, blockposition1, iblockdata1, world.getFluidState(blockposition1), fluid1.getType())) {
+                 // CraftBukkit start
+-                org.bukkit.block.Block source = CraftBlock.at(world, fluidPos);
+-                BlockFromToEvent event = new BlockFromToEvent(source, BlockFace.DOWN);
+-                world.getMinecraftWorld().getCraftServer().getPluginManager().callEvent(event);
++                // org.bukkit.block.Block source = CraftBlock.at(world, fluidPos);
++                // BlockFromToEvent event = new BlockFromToEvent(source, BlockFace.DOWN);
++                // world.getMinecraftWorld().getCraftServer().getPluginManager().callEvent(event);
+ 
+-                if (event.isCancelled()) {
+-                    return;
+-                }
++                // if (event.isCancelled()) {
++                    // return;
++                // }
+                 // CraftBukkit end
+-                this.spreadTo(world, blockposition1, iblockdata1, Direction.DOWN, fluid1);
+-                if (this.sourceNeighborCount(world, fluidPos) >= 3) {
+-                    this.spreadToSides(world, fluidPos, state, iblockdata);
+-                }
+-            } else if (state.isSource() || !this.isWaterHole(world, fluid1.getType(), fluidPos, iblockdata, blockposition1, iblockdata1)) {
+-                this.spreadToSides(world, fluidPos, state, iblockdata);
+-            }
+-
+-        }
++                // this.spreadTo(world, blockposition1, iblockdata1, Direction.DOWN, fluid1);
++                // if (this.sourceNeighborCount(world, fluidPos) >= 3) {
++                    // this.spreadToSides(world, fluidPos, state, iblockdata);
++                // }
++            // } else if (state.isSource() || !this.isWaterHole(world, fluid1.getType(), fluidPos, iblockdata, blockposition1, iblockdata1)) {
++                // this.spreadToSides(world, fluidPos, state, iblockdata);
++            // }
++
++        // }
+     }
+ 
+     private void spreadToSides(LevelAccessor world, BlockPos pos, FluidState fluidState, BlockState blockState) {

@@ -1,0 +1,21 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft <robartalexis62@gmail.com>
+Date: Tue, 21 Jan 2025 21:21:04 +0100
+Subject: [PATCH] Exclude barrier blocks from farmland survival checks
+
+
+diff --git a/src/main/java/net/minecraft/world/level/block/FarmBlock.java b/src/main/java/net/minecraft/world/level/block/FarmBlock.java
+index 3895ff8a3fea0f93e5b781e5d71e8ea2eda13d2e..73fa88c0adce63d78f278b5cf08b543e47165c52 100644
+--- a/src/main/java/net/minecraft/world/level/block/FarmBlock.java
++++ b/src/main/java/net/minecraft/world/level/block/FarmBlock.java
+@@ -52,7 +52,9 @@ public class FarmBlock extends Block {
+     @Override
+     public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
+         BlockState iblockdata1 = world.getBlockState(pos.above());
+-
++        if (iblockdata1.is(Blocks.BARRIER)){
++            return true;
++        }
+         return !iblockdata1.getMaterial().isSolid() || iblockdata1.getBlock() instanceof FenceGateBlock || iblockdata1.getBlock() instanceof MovingPistonBlock;
+     }
+ 

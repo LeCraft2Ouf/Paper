@@ -1,0 +1,80 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft <robartalexis62@gmail.com>
+Date: Mon, 2 Sep 2024 10:38:02 +0200
+Subject: [PATCH] Try cancel grow Melon Block && Remove light Stem
+
+
+diff --git a/src/main/java/net/minecraft/world/level/block/StemBlock.java b/src/main/java/net/minecraft/world/level/block/StemBlock.java
+index 05899325011f9299baeee0424723c5e7e16d8bf6..c5c55d0c918fecf28cddbdd9bd94d061cf25e9cd 100644
+--- a/src/main/java/net/minecraft/world/level/block/StemBlock.java
++++ b/src/main/java/net/minecraft/world/level/block/StemBlock.java
+@@ -49,47 +49,37 @@ public class StemBlock extends BushBlock implements BonemealableBlock {
+ 
+     @Override
+     public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random random) {
+-        if (world.getRawBrightness(pos, 0) >= 9) {
+-            float f = CropBlock.getGrowthSpeed(this, world, pos);
+-
+-            if (random.nextInt((int) ((100.0F / (this == Blocks.PUMPKIN_STEM ? world.spigotConfig.pumpkinModifier : world.spigotConfig.melonModifier)) * (25.0F / f)) + 1) == 0) { // Spigot
+-                int i = (Integer) state.getValue(StemBlock.AGE);
+-
+-                if (i < 7) {
+-                    state = (BlockState) state.setValue(StemBlock.AGE, i + 1);
+-                    CraftEventFactory.handleBlockGrowEvent(world, pos, state, 2); // CraftBukkit
+-                } else {
+-                    Direction enumdirection = Direction.Plane.HORIZONTAL.getRandomDirection(random);
+-                    BlockPos blockposition1 = pos.relative(enumdirection);
+-                    BlockState iblockdata1 = world.getBlockState(blockposition1.below());
+-
+-                    if (this == Blocks.PUMPKIN_STEM){
+-                        if (world.getBlockState(blockposition1).isAir() && (iblockdata1.is(Blocks.FARMLAND) || iblockdata1.is(BlockTags.DIRT) || iblockdata1.is(Blocks.WHITE_GLAZED_TERRACOTTA) || iblockdata1.is(Blocks.ORANGE_GLAZED_TERRACOTTA) || iblockdata1.is(Blocks.MAGENTA_GLAZED_TERRACOTTA) || iblockdata1.is(Blocks.BLUE_GLAZED_TERRACOTTA))) {
++        if (this == Blocks.MELON_STEM) {
++            return; // Désactiver la croissance du melon
++        }
++
++        float f = CropBlock.getGrowthSpeed(this, world, pos);
++
++        if (random.nextInt((int) ((100.0F / (this == Blocks.PUMPKIN_STEM ? world.spigotConfig.pumpkinModifier : world.spigotConfig.melonModifier)) * (25.0F / f)) + 1) == 0) { // Spigot
++            int i = (Integer) state.getValue(StemBlock.AGE);
++
++            if (i < 7) {
++                state = (BlockState) state.setValue(StemBlock.AGE, i + 1);
++                CraftEventFactory.handleBlockGrowEvent(world, pos, state, 2); // CraftBukkit
++            } else {
++                Direction enumdirection = Direction.Plane.HORIZONTAL.getRandomDirection(random);
++                BlockPos blockposition1 = pos.relative(enumdirection);
++                BlockState iblockdata1 = world.getBlockState(blockposition1.below());
++
++                if (this == Blocks.PUMPKIN_STEM) {
++                    if (world.getBlockState(blockposition1).isAir() && (iblockdata1.is(Blocks.FARMLAND) || iblockdata1.is(BlockTags.DIRT) || iblockdata1.is(Blocks.WHITE_GLAZED_TERRACOTTA) || iblockdata1.is(Blocks.ORANGE_GLAZED_TERRACOTTA) || iblockdata1.is(Blocks.MAGENTA_GLAZED_TERRACOTTA) || iblockdata1.is(Blocks.BLUE_GLAZED_TERRACOTTA))) {
+                         // CraftBukkit start
+-                            if (!CraftEventFactory.handleBlockGrowEvent(world, blockposition1, this.fruit.defaultBlockState())) {
+-                                return;
+-                            }
++                        if (!CraftEventFactory.handleBlockGrowEvent(world, blockposition1, this.fruit.defaultBlockState())) {
++                            return;
+                         }
+                         // CraftBukkit end
+-                    } else if (this == Blocks.MELON){
+-                        return;    
+-                    } else {
+-                        if (world.getBlockState(blockposition1).isAir() && (iblockdata1.is(Blocks.FARMLAND) || iblockdata1.is(BlockTags.DIRT))) {
+-                        // CraftBukkit start
+-                            if (!CraftEventFactory.handleBlockGrowEvent(world, blockposition1, this.fruit.defaultBlockState())) {
+-                                return;
+-                            }
+-                        // CraftBukkit end
+-                        }
+-                    
+-                        
+                     }
+                 }
+             }
+-
+         }
+     }
+ 
++
+     @Override
+     public ItemStack getCloneItemStack(BlockGetter world, BlockPos pos, BlockState state) {
+         return new ItemStack((ItemLike) this.seedSupplier.get());

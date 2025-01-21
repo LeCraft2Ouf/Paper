@@ -1,0 +1,32 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LeCraft <robartalexis62@gmail.com>
+Date: Fri, 30 Aug 2024 06:26:01 +0200
+Subject: [PATCH] Fix Burn Skeleton && Zombie
+
+
+diff --git a/src/main/java/net/minecraft/world/entity/monster/AbstractSkeleton.java b/src/main/java/net/minecraft/world/entity/monster/AbstractSkeleton.java
+index e23fe546291e670f89447398507d08a0a07efa85..278a7d855c1a9ef0994b84f3e87716840ec0fd04 100644
+--- a/src/main/java/net/minecraft/world/entity/monster/AbstractSkeleton.java
++++ b/src/main/java/net/minecraft/world/entity/monster/AbstractSkeleton.java
+@@ -97,7 +97,7 @@ public abstract class AbstractSkeleton extends Monster implements RangedAttackMo
+     }
+ 
+     // Paper start
+-    private boolean shouldBurnInDay = true;
++    private boolean shouldBurnInDay = false;
+     public boolean shouldBurnInDay() { return shouldBurnInDay; }
+     public void setShouldBurnInDay(boolean shouldBurnInDay) { this.shouldBurnInDay = shouldBurnInDay; }
+     // Paper end
+diff --git a/src/main/java/net/minecraft/world/entity/monster/Zombie.java b/src/main/java/net/minecraft/world/entity/monster/Zombie.java
+index cd88413f30632307faba63572915656b6a8469f7..cfefa4efda90c9a9863ee37ee8721f8340a1e1ce 100644
+--- a/src/main/java/net/minecraft/world/entity/monster/Zombie.java
++++ b/src/main/java/net/minecraft/world/entity/monster/Zombie.java
+@@ -93,7 +93,7 @@ public class Zombie extends Monster {
+     private int inWaterTime;
+     public int conversionTime;
+     private int lastTick = MinecraftServer.currentTick; // CraftBukkit - add field
+-    private boolean shouldBurnInDay = true; // Paper
++    private boolean shouldBurnInDay = false; // Paper
+ 
+     public Zombie(EntityType<? extends Zombie> type, Level world) {
+         super(type, world);
